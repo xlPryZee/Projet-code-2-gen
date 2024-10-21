@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code2Gen - Generate HTML, CSS, JS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <h1>Code2Gen</h1>
+            <p>Generate clean HTML, CSS, and JavaScript from your description</p>
+            <form id="generate-form">
+                <textarea id="description" placeholder="Enter your description here..." rows="5"></textarea>
+                <button type="submit">Generate Code</button>
+            </form>
+            <div id="loader" class="loader" style="display: none;"></div>
+            <div id="result">
+                <!-- Loader will be shown here -->
+               
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
