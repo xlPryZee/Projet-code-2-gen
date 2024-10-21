@@ -33,7 +33,7 @@ Si la clé API n'est pas définie, l'application proposera un fichier HTML aléa
 1. **Cloner le dépôt**
 
    ```bash
-   git clone https://github.com/votre-utilisateur/code2gen.git
+   git clone https://github.com/leochiron/code2Gen.git
    cd code2gen
    ```
 
