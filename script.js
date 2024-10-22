@@ -1,20 +1,23 @@
 const loader = document.getElementById('loader');
 
-document.getElementById('generate-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
+// Add event listener to the form to handle the submission
+const form = document.getElementById('generate-form');
+form.addEventListener('submit', async function (e) {
+    e.preventDefault(); // Prevent the default form submission
 
     const description = document.getElementById('description').value;
 
+    // Check if the description is provided
     if (!description) {
         alert('Please enter a description!');
         return;
     }
 
-    // Show the loader before sending the request
+    // Show the loader while processing the request
     loader.style.display = 'block';
 
     try {
-        // Make a POST request to the PHP backend
+        // Send a POST request to the PHP backend with the description
         const response = await fetch('generate.php', {
             method: 'POST',
             headers: {
@@ -24,23 +27,22 @@ document.getElementById('generate-form').addEventListener('submit', async functi
         });
 
         const data = await response.json();
-
-        // Display the generated link
         const resultDiv = document.getElementById('result');
-        // Get generated link (unique for the moment)
-        let link = (data.links[0] ? data.links[0] : null);
+        // Check if the response contains generated links
+        let link = (data.links && data.links[0]) ? data.links[0] : null;
 
+        // Display the result or error
         if (link) {
             resultDiv.innerHTML = `<a href="${link}" target="_blank">View Generated Page</a>`;
         } else {
             resultDiv.innerHTML = 'Error generating the page.';
         }
     } catch (error) {
-        // Handle any potential errors
-        resultDiv.innerHTML = 'An error occurred. Please try again.';
+        // Display an error message if something goes wrong
+        document.getElementById('result').innerHTML = 'An error occurred. Please try again.';
         console.error('Error:', error);
     } finally {
-        // Hide the loader once the request is complete
+        // Hide the loader after processing
         loader.style.display = 'none';
     }
 });
