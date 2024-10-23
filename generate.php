@@ -34,6 +34,8 @@ $buildNumber = incrementBuildCount('build_count.txt');
 $prompt = buildPrompt($description);
 
 // Send the prompt to OpenAI's API and get a response
+
+
 $generatedFiles = getGeneratedFiles($prompt, $API_KEY, $MODEL);
 
 if (!$generatedFiles) {
@@ -118,7 +120,7 @@ function getGeneratedFiles($prompt, $API_KEY, $MODEL) {
         'messages' => [['role' => 'user', 'content' => $prompt]],
         'max_tokens' => 10000
     ]);
-
+    
     $ch = curl_init('https://api.openai.com/v1/chat/completions');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
@@ -127,10 +129,11 @@ function getGeneratedFiles($prompt, $API_KEY, $MODEL) {
         'Authorization: Bearer ' . $API_KEY
     ]);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
     $response = curl_exec($ch);
     curl_close($ch);
-
+    
     $response = json_decode($response, true);
 
     if (!isset($response['choices'][0]['message']['content'])) {
@@ -187,5 +190,12 @@ function logError($message, $context = []) {
  */
 function respondWithError($errorMessage) {
     echo json_encode(['error' => $errorMessage]);
+}
+
+function dd($data) {
+    echo '<pre>';
+    var_dump($data);
+    echo '</pre>';
+    die();
 }
 ?>
