@@ -1,10 +1,10 @@
 <?php
 // generate.php
 
-$config = include('config.php');
+// $config = include('config.php');
 
 // Retrieve the API key from the config file
-$API_KEY = $config['api_key_open_ai'];
+$API_KEY = null;//$config['api_key_open_ai'];
 $MODEL = 'gpt-4o-mini'; // The model to use
 $buildsDir = __DIR__ . '/builds'; // Directory where generated files are stored
 
@@ -62,7 +62,7 @@ function serveRandomBuild($buildsDir) {
         if ($files && count($files) > 0) {
             $randomFile = $files[array_rand($files)];
             $fileLink = '/builds/' . basename($randomFile);
-            echo json_encode(['link' => $fileLink]);
+            echo json_encode(['links' => [$fileLink]]);
         } else {
             respondWithError('No builds available.');
         }
