@@ -1,10 +1,14 @@
 <?php
 // generate.php
 
-// $config = include('config.php');
+if (file_exists('config.php')) {
+    $config = include('config.php');
+} else {    
+    $config['api_key_open_ai'] = null;
+}
 
 // Retrieve the API key from the config file
-$API_KEY = null;//$config['api_key_open_ai'];
+$API_KEY = $config['api_key_open_ai'];
 $MODEL = 'gpt-4o-mini'; // The model to use
 $buildsDir = __DIR__ . '/builds'; // Directory where generated files are stored
 
