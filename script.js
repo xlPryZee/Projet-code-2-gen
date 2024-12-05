@@ -33,7 +33,9 @@ form.addEventListener('submit', async function (e) {
 
         // Display the result or error
         if (link) {
-            resultDiv.innerHTML = `<a href="${link}" target="_blank">View Generated Page</a>`;
+            //get current url 
+            var url = window.location.href;
+            resultDiv.innerHTML = `<a href="${url+link}" target="_blank">View Generated Page</a>`;
         } else {
             resultDiv.innerHTML = 'Error generating the page.';
         }

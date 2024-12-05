@@ -1,7 +1,11 @@
 <?php
 // generate.php
 
-$config = include('config.php');
+if (file_exists('config.php')) {
+    $config = include('config.php');
+} else {    
+    $config['api_key_open_ai'] = null;
+}
 
 // Retrieve the API key and AI provider from the config file
 $IA_USED = $config['ia_used'];
@@ -167,7 +171,7 @@ function serveRandomBuild($buildsDir) {
         if ($files && count($files) > 0) {
             $randomFile = $files[array_rand($files)];
             $fileLink = '/builds/' . basename($randomFile);
-            echo json_encode(['link' => $fileLink]);
+            echo json_encode(['links' => [$fileLink]]);
         } else {
             respondWithError('No builds available.');
         }
