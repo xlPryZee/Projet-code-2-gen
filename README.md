@@ -45,7 +45,7 @@ Si la clé API n'est pas définie, l'application proposera un fichier HTML aléa
    // config.php
    return [
       'ia_used' => 'gemini',//openai or gemini
-      'api_key_open_ai' => 'sk-votre-clé-api-ici'
+      'api_key_open_ai' => 'sk-votre-clé-api-ici',
       'api_key_gemini' => 'sk-votre-clé-api-ici'
    ];
    ```
