@@ -42,6 +42,7 @@ Si la clé API n'est pas définie, l'application proposera un fichier HTML aléa
    Créez un fichier `config.php` à la racine du projet (ou utilisez celui déjà fourni) et ajoutez-y votre clé OpenAI API :
 
    ```php
+   <?php 
    // config.php
    return [
       'ia_used' => 'gemini',//openai or gemini
