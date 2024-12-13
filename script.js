@@ -33,8 +33,13 @@ form.addEventListener('submit', async function (e) {
 
         // Display the result or error
         if (link) {
-            //get current url 
+            //get current url without potential extension file
+
             var url = window.location.href;
+            if (url.endsWith('index.html')) {
+                url = url.replace('/index.html', '');
+            }
+
             resultDiv.innerHTML = `<a href="${url+link}" target="_blank">View Generated Page</a>`;
         } else {
             resultDiv.innerHTML = 'Error generating the page.';

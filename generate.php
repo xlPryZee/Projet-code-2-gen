@@ -3,8 +3,6 @@
 
 if (file_exists('config.php')) {
     $config = include('config.php');
-    var_dump($config);
-    die;
 } else {    
     $config['api_key_open_ai'] = null;
 }
