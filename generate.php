@@ -12,7 +12,7 @@ $IA_USED = $config['ia_used'];
 $API_KEY = $IA_USED === 'gemini' ? $config['api_key_gemini'] : $config['api_key_open_ai'];
  // Adjust the model based on the provider
  if($IA_USED === 'gemini'){
-    $GEM_MODEL = $config['gemini_model'];
+    $GEM_MODEL = ($config['gemini_model'] != null) ? $config['gemini_model'] : 'gemini-1.5-flash-latest';
     $MODEL =  $GEM_MODEL != null ? $GEM_MODEL : 'gemini-1.5-flash-latest';
  } else {
     $MODEL = 'gpt-4o-mini';
