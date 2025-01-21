@@ -47,7 +47,8 @@ Si la clé API n'est pas définie, l'application proposera un fichier HTML aléa
    return [
       'ia_used' => 'gemini',//openai or gemini
       'api_key_open_ai' => 'sk-votre-clé-api-ici',
-      'api_key_gemini' => 'sk-votre-clé-api-ici'
+      'api_key_gemini' => 'sk-votre-clé-api-ici',
+      'gemini_model' => 'gemini-1.5-flash-8b' // gemini-1.5-flash-8b or gemini-1.5-flash-latest
    ];
    ```
 

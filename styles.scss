@@ -1,7 +1,8 @@
 // styles.scss
-$primary-color: #6c63ff; // Soft purple for a modern look
-$secondary-color: #4caf50; // Bright green for contrast
+$primary-color: #003E7F; // Soft purple for a modern look
+$secondary-color: #4CA4FF; // Bright green for contrast
 $background-color: #f9f9f9;
+$warning-color: #df0000;
 $text-color: #333;
 $border-radius: 10px;
 $font-stack: 'Roboto', sans-serif;
@@ -63,7 +64,7 @@ body {
         textarea {
             width: 100%;
             padding: 15px;
-            border: 1px solid lighten($primary-color, 30%);
+            border: 1px solid lighten($warning-color, 30%);
             border-radius: $border-radius;
             margin-bottom: 20px;
             font-size: 1rem;
