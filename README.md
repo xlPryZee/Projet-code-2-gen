@@ -1,6 +1,6 @@
 # **Code2Gen - Automatic HTML, CSS, and JS Generator**
 
-## **Description**   
+## **Description**
 
 **Code2Gen** est un outil qui permet de générer automatiquement du code HTML, CSS, et JavaScript à partir d'une description textuelle fournie par l'utilisateur. Il utilise une API de modèle de langage (par exemple OpenAI GPT-4) pour générer du code web complet et le rendre disponible via un lien de téléchargement.
 
@@ -42,7 +42,7 @@ Si la clé API n'est pas définie, l'application proposera un fichier HTML aléa
    Créez un fichier `config.php` à la racine du projet (ou utilisez celui déjà fourni) et ajoutez-y votre clé OpenAI API :
 
    ```php
-   <?php 
+   <?php
    // config.php
    return [
       'ia_used' => 'gemini',//openai or gemini
@@ -119,6 +119,7 @@ Vous pouvez ajuster les styles dans le fichier SCSS pour modifier l'apparence de
 ## **Problèmes Courants**
 
 1. **Pas de réponse de l'API OpenAI** :
+
    - Vérifiez que votre clé API est correctement définie dans le fichier `config.php`.
    - Assurez-vous que votre serveur dispose d'un accès Internet.
 
@@ -127,5 +128,4 @@ Vous pouvez ajuster les styles dans le fichier SCSS pour modifier l'apparence de
 
 ## **Licence**
 
-Ce projet est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer.
-=======
+# Ce projet est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer.

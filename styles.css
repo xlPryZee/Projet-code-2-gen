@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #f9f9f9;
   color: #333;
   display: flex;
@@ -31,11 +31,13 @@ body {
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 .card h1 {
   font-size: 2rem;
-  color: #003E7F;
+  color: #003e7f;
   margin-bottom: 20px;
   font-weight: 700;
 }
@@ -61,19 +63,21 @@ body {
   transition: border-color 0.3s ease;
 }
 .card form textarea:focus {
-  border-color: #003E7F;
+  border-color: #003e7f;
   outline: none;
 }
 .card form button {
   padding: 15px 25px;
-  background-color: #4CA4FF;
+  background-color: #4ca4ff;
   color: white;
   border: none;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 .card form button:hover {
   background-color: #198aff;
@@ -86,7 +90,7 @@ body {
   margin-top: 20px;
 }
 .card #result a {
-  color: #003E7F;
+  color: #003e7f;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -97,7 +101,7 @@ body {
 
 .loader {
   border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #003E7F; /* Blue */
+  border-top: 4px solid #003e7f; /* Blue */
   border-radius: 50%;
   width: 40px;
   height: 40px;

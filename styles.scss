@@ -1,6 +1,6 @@
 // styles.scss
-$primary-color: #003E7F; // Soft purple for a modern look
-$secondary-color: #4CA4FF; // Bright green for contrast
+$primary-color: #003e7f; // Soft purple for a modern look
+$secondary-color: #4ca4ff; // Bright green for contrast
 $background-color: #f9f9f9;
 $warning-color: #df0000;
 $text-color: #333;
@@ -9,123 +9,131 @@ $font-stack: 'Roboto', sans-serif;
 $transition-speed: 0.3s;
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: $font-stack;
-    background-color: $background-color;
-    color: $text-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 20px;
+  font-family: $font-stack;
+  background-color: $background-color;
+  color: $text-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
 }
 
 .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .card {
-    background-color: white;
-    width: 100%;
-    max-width: 500px;
-    padding: 40px;
-    border-radius: $border-radius;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform $transition-speed ease, box-shadow $transition-speed ease;
-    
-    h1 {
-        font-size: 2rem;
-        color: $primary-color;
-        margin-bottom: 20px;
-        font-weight: 700;
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: $border-radius;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition:
+    transform $transition-speed ease,
+    box-shadow $transition-speed ease;
+
+  h1 {
+    font-size: 2rem;
+    color: $primary-color;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: darken($text-color, 10%);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid lighten($warning-color, 30%);
+      border-radius: $border-radius;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: $text-color;
+      background-color: #f1f1f1;
+      transition: border-color $transition-speed ease;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+      }
     }
 
-    p {
-        font-size: 1.1rem;
-        margin-bottom: 20px;
-        color: darken($text-color, 10%);
+    button {
+      padding: 15px 25px;
+      background-color: $secondary-color;
+      color: white;
+      border: none;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition:
+        background-color $transition-speed ease,
+        transform $transition-speed ease;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+        transform: translateY(-2px);
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
+  }
 
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+  #result {
+    margin-top: 20px;
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color $transition-speed ease;
 
-        textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid lighten($warning-color, 30%);
-            border-radius: $border-radius;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            color: $text-color;
-            background-color: #f1f1f1;
-            transition: border-color $transition-speed ease;
-
-            &:focus {
-                border-color: $primary-color;
-                outline: none;
-            }
-        }
-
-        button {
-            padding: 15px 25px;
-            background-color: $secondary-color;
-            color: white;
-            border: none;
-            border-radius: $border-radius;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color $transition-speed ease, transform $transition-speed ease;
-
-            &:hover {
-                background-color: darken($secondary-color, 10%);
-                transform: translateY(-2px);
-            }
-
-            &:focus {
-                outline: none;
-            }
-        }
+      &:hover {
+        color: darken($primary-color, 10%);
+      }
     }
-
-    #result {
-        margin-top: 20px;
-        a {
-            color: $primary-color;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color $transition-speed ease;
-
-            &:hover {
-                color: darken($primary-color, 10%);
-            }
-        }
-    }
+  }
 }
 
 .loader {
-    border: 4px solid #f3f3f3; /* Light grey */
-    border-top: 4px solid $primary-color; /* Blue */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto; /* Center the loader */
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid $primary-color; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto; /* Center the loader */
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

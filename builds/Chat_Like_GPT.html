@@ -1,108 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Like GPT</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        #chat-container {
-            width: 90%;
-            max-width: 600px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
-        #messages {
-            padding: 20px;
-            height: 400px;
-            overflow-y: auto;
-        }
-        .message {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .user {
-            background-color: #e1ffc7;
-            align-self: flex-end;
-        }
-        .bot {
-            background-color: #d1e0ff;
-            align-self: flex-start;
-        }
-        #input-area {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #ccc;
-        }
-        #user-input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-        #send-button {
-            padding: 10px 15px;
-            background-color: #5cb85c;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-        }
-        #send-button:hover {
-            background-color: #4cae4c;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      #chat-container {
+        width: 90%;
+        max-width: 600px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+      #messages {
+        padding: 20px;
+        height: 400px;
+        overflow-y: auto;
+      }
+      .message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .user {
+        background-color: #e1ffc7;
+        align-self: flex-end;
+      }
+      .bot {
+        background-color: #d1e0ff;
+        align-self: flex-start;
+      }
+      #input-area {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+      }
+      #user-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+      #send-button {
+        padding: 10px 15px;
+        background-color: #5cb85c;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+      }
+      #send-button:hover {
+        background-color: #4cae4c;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="chat-container">
-        <div id="messages"></div>
-        <div id="input-area">
-            <input type="text" id="user-input" placeholder="Posez votre question..." />
-            <button id="send-button">Envoyer</button>
-        </div>
+      <div id="messages"></div>
+      <div id="input-area">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Posez votre question..."
+        />
+        <button id="send-button">Envoyer</button>
+      </div>
     </div>
     <script>
-        const messagesContainer = document.getElementById('messages');
-        const userInput = document.getElementById('user-input');
-        const sendButton = document.getElementById('send-button');
+      const messagesContainer = document.getElementById('messages');
+      const userInput = document.getElementById('user-input');
+      const sendButton = document.getElementById('send-button');
 
-        sendButton.addEventListener('click', sendMessage);
-        userInput.addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        function sendMessage() {
-            const userMessage = userInput.value.trim();
-            if (userMessage) {
-                addMessage(userMessage, 'user');
-                userInput.value = '';
-                // Simulate bot response
-                setTimeout(() => addMessage('Ceci est une réponse du bot.', 'bot'), 500);
-            }
+      sendButton.addEventListener('click', sendMessage);
+      userInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+          sendMessage();
         }
+      });
 
-        function addMessage(text, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender);
-            messageDiv.textContent = text;
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to bottom
+      function sendMessage() {
+        const userMessage = userInput.value.trim();
+        if (userMessage) {
+          addMessage(userMessage, 'user');
+          userInput.value = '';
+          // Simulate bot response
+          setTimeout(
+            () => addMessage('Ceci est une réponse du bot.', 'bot'),
+            500
+          );
         }
+      }
+
+      function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', sender);
+        messageDiv.textContent = text;
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to bottom
+      }
     </script>
-</body>
+  </body>
 </html>

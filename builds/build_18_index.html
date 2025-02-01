@@ -1,73 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jeu en JavaScript</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        #game {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      #game {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="game">
-        <h1>Jeu de devinette</h1>
-        <p>Devinez un nombre entre 1 et 100</p>
-        <input type="number" id="guess" placeholder="Votre devinette" />
-        <button id="submit">Soumettre</button>
-        <p id="message"></p>
+      <h1>Jeu de devinette</h1>
+      <p>Devinez un nombre entre 1 et 100</p>
+      <input type="number" id="guess" placeholder="Votre devinette" />
+      <button id="submit">Soumettre</button>
+      <p id="message"></p>
     </div>
     <script>
-        const randomNumber = Math.floor(Math.random() * 100) + 1;
-        const submitButton = document.getElementById('submit');
-        const messageDisplay = document.getElementById('message');
-        const guessInput = document.getElementById('guess');
+      const randomNumber = Math.floor(Math.random() * 100) + 1;
+      const submitButton = document.getElementById('submit');
+      const messageDisplay = document.getElementById('message');
+      const guessInput = document.getElementById('guess');
 
-        submitButton.addEventListener('click', function() {
-            const userGuess = parseInt(guessInput.value);
-            if (isNaN(userGuess)) {
-                messageDisplay.textContent = 'Veuillez entrer un nombre valide.';
-                return;
-            }
-            if (userGuess < 1 || userGuess > 100) {
-                messageDisplay.textContent = 'Le nombre doit être entre 1 et 100.';
-                return;
-            }
-            if (userGuess === randomNumber) {
-                messageDisplay.textContent = 'Bravo! Vous avez deviné le bon nombre!';
-            } else if (userGuess < randomNumber) {
-                messageDisplay.textContent = 'Trop bas! Essayez encore.';
-            } else {
-                messageDisplay.textContent = 'Trop haut! Essayez encore.';
-            }
-        });
+      submitButton.addEventListener('click', function () {
+        const userGuess = parseInt(guessInput.value);
+        if (isNaN(userGuess)) {
+          messageDisplay.textContent = 'Veuillez entrer un nombre valide.';
+          return;
+        }
+        if (userGuess < 1 || userGuess > 100) {
+          messageDisplay.textContent = 'Le nombre doit être entre 1 et 100.';
+          return;
+        }
+        if (userGuess === randomNumber) {
+          messageDisplay.textContent = 'Bravo! Vous avez deviné le bon nombre!';
+        } else if (userGuess < randomNumber) {
+          messageDisplay.textContent = 'Trop bas! Essayez encore.';
+        } else {
+          messageDisplay.textContent = 'Trop haut! Essayez encore.';
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
