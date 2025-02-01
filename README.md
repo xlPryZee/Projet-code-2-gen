@@ -1,6 +1,6 @@
 # **Code2Gen - Automatic HTML, CSS, and JS Generator**
 
-## **Description**
+## **Description**   
 
 **Code2Gen** est un outil qui permet de générer automatiquement du code HTML, CSS, et JavaScript à partir d'une description textuelle fournie par l'utilisateur. Il utilise une API de modèle de langage (par exemple OpenAI GPT-4) pour générer du code web complet et le rendre disponible via un lien de téléchargement.
 
