@@ -1,0 +1,27 @@
+{
+  "name": "code2gen",
+  "version": "1.0.0",
+  "description": "## **Description**",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pheygna/Projet-code-2-gen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pheygna/Projet-code-2-gen/issues"
+  },
+  "homepage": "https://github.com/Pheygna/Projet-code-2-gen#readme",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "husky": "^8.0.0",
+    "inquirer": "^12.3.3",
+    "prettier": "^3.4.2"
+  }
+}
