@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flipper</title>
+<style>
+#flipper-container {
+  width: 400px;
+  height: 300px;
+  background-color: #222;
+  overflow: hidden;
+  position: relative;
+}
+
+#flipper-table {
+  width: 400px;
+  height: 300px;
+  background-image: url('https://via.placeholder.com/400x300/007bff/fff?text=Flipper+Table'); /* Remplacez par votre image */
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flipper {
+  width: 50px;
+  height: 100px;
+  background-color: #e00000;
+  position: absolute;
+  bottom: 0;
+  left: 150px;
+  transform-origin: bottom;
+  transition: transform 0.2s ease-in-out;
+}
+
+.flipper:hover {
+  transform: rotate(-10deg);
+}
+</style>
+</head>
+<body>
+
+<div id="flipper-container">
+  <div id="flipper-table"></div>
+  <div class="flipper"></div>
+</div>
+
+<script>
+const flipper = document.querySelector('.flipper');
+flipper.addEventListener('mouseenter', function() {
+    this.style.transform = 'rotate(-10deg)';
+});
+
+flipper.addEventListener('mouseleave', function() {
+    this.style.transform = 'rotate(0deg)';
+});
+
+</script>
+
+</body>
+</html>
