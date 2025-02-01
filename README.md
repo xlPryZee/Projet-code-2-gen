@@ -128,3 +128,4 @@ Vous pouvez ajuster les styles dans le fichier SCSS pour modifier l'apparence de
 ## **Licence**
 
 Ce projet est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer.
+=======
