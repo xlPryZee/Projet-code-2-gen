@@ -1,4 +1,5 @@
 const loader = document.getElementById('loader');
+// Test du hook pre-commit
 
 // Add event listener to the form to handle the submission
 const form = document.getElementById('generate-form');
