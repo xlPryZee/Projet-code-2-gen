@@ -1,70 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Outil d'édition de code</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            color: #0056b3;
-        }
-        .editor {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        textarea {
-            width: 100%;
-            height: 300px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 10px;
-            font-family: monospace;
-        }
-        button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #0056b3;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #004494;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        text-align: center;
+        color: #0056b3;
+      }
+      .editor {
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      textarea {
+        width: 100%;
+        height: 300px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        font-family: monospace;
+      }
+      button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #0056b3;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #004494;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Outil d'édition de code</h1>
     <div class="editor">
-        <textarea id="codeEditor"></textarea>
-        <button id="runButton">Exécuter le code</button>
+      <textarea id="codeEditor"></textarea>
+      <button id="runButton">Exécuter le code</button>
     </div>
     <script>
-        document.getElementById('runButton').addEventListener('click', function() {
-            const code = document.getElementById('codeEditor').value;
-            try {
-                const result = eval(code);
-                alert('Résultat: ' + result);
-            } catch (error) {
-                alert('Erreur: ' + error.message);
-            }
+      document
+        .getElementById('runButton')
+        .addEventListener('click', function () {
+          const code = document.getElementById('codeEditor').value;
+          try {
+            const result = eval(code);
+            alert('Résultat: ' + result);
+          } catch (error) {
+            alert('Erreur: ' + error.message);
+          }
         });
     </script>
-</body>
+  </body>
 </html>

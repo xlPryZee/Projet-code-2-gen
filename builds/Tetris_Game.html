@@ -1,135 +1,169 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tetris Game</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-        }
-        canvas {
-            border: 2px solid #fff;
-            background-color: #111;
-        }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #000;
+        color: #fff;
+      }
+      canvas {
+        border: 2px solid #fff;
+        background-color: #111;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <canvas id="tetris" width="240" height="400"></canvas>
     <script>
-        const canvas = document.getElementById('tetris');
-        const context = canvas.getContext('2d');
-        const rows = 20;
-        const cols = 10;
-        const blockSize = 20;
-        const colors = [
-            null,
-            'cyan',
-            'blue',
-            'orange',
-            'yellow',
-            'green',
-            'purple',
-            'red'
-        ];
+      const canvas = document.getElementById('tetris');
+      const context = canvas.getContext('2d');
+      const rows = 20;
+      const cols = 10;
+      const blockSize = 20;
+      const colors = [
+        null,
+        'cyan',
+        'blue',
+        'orange',
+        'yellow',
+        'green',
+        'purple',
+        'red',
+      ];
 
-        let board = Array.from({ length: rows }, () => Array(cols).fill(0));
+      let board = Array.from({ length: rows }, () => Array(cols).fill(0));
 
-        class Piece {
-            constructor(shape, color) {
-                this.shape = shape;
-                this.color = color;
-                this.x = 4;
-                this.y = 0;
-            }
-
-            draw() {
-                context.fillStyle = this.color;
-                this.shape.forEach((row, dy) => {
-                    row.forEach((value, dx) => {
-                        if (value) {
-                            context.fillRect((this.x + dx) * blockSize, (this.y + dy) * blockSize, blockSize, blockSize);
-                        }
-                    });
-                });
-            }
-
-            collide(board) {
-                return this.shape.some((row, dy) => {
-                    return row.some((value, dx) => {
-                        return (value && (board[this.y + dy] && board[this.y + dy][this.x + dx]) !== 0);
-                    });
-                });
-            }
-
-            move(dir) {
-                this.x += dir;
-                if (this.collide(board)) this.x -= dir;
-            }
-
-            drop() {
-                this.y++;
-                if (this.collide(board)) {
-                    this.y--;
-                    this.merge(board);
-                    return newPiece();
-                }
-                return this;
-            }
-
-            merge(board) {
-                this.shape.forEach((row, dy) => {
-                    row.forEach((value, dx) => {
-                        if (value) board[this.y + dy][this.x + dx] = this.color;
-                    });
-                });
-            }
+      class Piece {
+        constructor(shape, color) {
+          this.shape = shape;
+          this.color = color;
+          this.x = 4;
+          this.y = 0;
         }
 
-        function newPiece() {
-            const shapes = [
-                [[1, 1, 1, 1]],
-                [[1, 1], [1, 1]],
-                [[0, 1, 1], [1, 1, 0]],
-                [[1, 1, 0], [0, 1, 1]],
-                [[0, 1, 0], [1, 1, 1]],
-                [[1, 0, 0], [1, 1, 1]],
-                [[0, 0, 1], [1, 1, 1]]
-            ];
-            const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-            return new Piece(randomShape, colors[Math.floor(Math.random() * colors.length)]);
-        }
-
-        function drawBoard() {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            board.forEach((row, y) => {
-                row.forEach((value, x) => {
-                    if (value) {
-                        context.fillStyle = value;
-                        context.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
-                    }
-                });
+        draw() {
+          context.fillStyle = this.color;
+          this.shape.forEach((row, dy) => {
+            row.forEach((value, dx) => {
+              if (value) {
+                context.fillRect(
+                  (this.x + dx) * blockSize,
+                  (this.y + dy) * blockSize,
+                  blockSize,
+                  blockSize
+                );
+              }
             });
+          });
         }
 
-        let piece = newPiece();
-        setInterval(() => {
-            piece = piece.drop();
-            drawBoard();
-            piece.draw();
-        }, 1000);
+        collide(board) {
+          return this.shape.some((row, dy) => {
+            return row.some((value, dx) => {
+              return (
+                value &&
+                (board[this.y + dy] && board[this.y + dy][this.x + dx]) !== 0
+              );
+            });
+          });
+        }
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowLeft') piece.move(-1);
-            if (event.key === 'ArrowRight') piece.move(1);
-            if (event.key === 'ArrowDown') piece = piece.drop();
+        move(dir) {
+          this.x += dir;
+          if (this.collide(board)) this.x -= dir;
+        }
+
+        drop() {
+          this.y++;
+          if (this.collide(board)) {
+            this.y--;
+            this.merge(board);
+            return newPiece();
+          }
+          return this;
+        }
+
+        merge(board) {
+          this.shape.forEach((row, dy) => {
+            row.forEach((value, dx) => {
+              if (value) board[this.y + dy][this.x + dx] = this.color;
+            });
+          });
+        }
+      }
+
+      function newPiece() {
+        const shapes = [
+          [[1, 1, 1, 1]],
+          [
+            [1, 1],
+            [1, 1],
+          ],
+          [
+            [0, 1, 1],
+            [1, 1, 0],
+          ],
+          [
+            [1, 1, 0],
+            [0, 1, 1],
+          ],
+          [
+            [0, 1, 0],
+            [1, 1, 1],
+          ],
+          [
+            [1, 0, 0],
+            [1, 1, 1],
+          ],
+          [
+            [0, 0, 1],
+            [1, 1, 1],
+          ],
+        ];
+        const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+        return new Piece(
+          randomShape,
+          colors[Math.floor(Math.random() * colors.length)]
+        );
+      }
+
+      function drawBoard() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        board.forEach((row, y) => {
+          row.forEach((value, x) => {
+            if (value) {
+              context.fillStyle = value;
+              context.fillRect(
+                x * blockSize,
+                y * blockSize,
+                blockSize,
+                blockSize
+              );
+            }
+          });
         });
+      }
+
+      let piece = newPiece();
+      setInterval(() => {
+        piece = piece.drop();
+        drawBoard();
+        piece.draw();
+      }, 1000);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') piece.move(-1);
+        if (event.key === 'ArrowRight') piece.move(1);
+        if (event.key === 'ArrowDown') piece = piece.drop();
+      });
     </script>
-</body>
+  </body>
 </html>
